@@ -1,0 +1,42 @@
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+    public class Main {
+
+        public static void main(String[] args) {
+
+            Scanner sc = new Scanner(System.in);
+            String A = sc.next();
+            /* Enter your code here. Print output to STDOUT. */
+
+            if(A.length()<=50) {
+                ArrayList<Character> myList = new ArrayList<>();
+                stringToArrayList(A, myList);
+
+                ArrayList<Character> myList2 = new ArrayList<>();
+                myList2 = Reserve(myList, myList2);
+                String S = myList.equals(myList2) ? "Yes" : "No";
+
+                System.out.println(S);
+            }
+
+        }
+
+        public static ArrayList<Character> Reserve(ArrayList<Character>myList,ArrayList<Character>myList2){
+            int count = 0;
+            for(int i = myList.size()-1; i>=0;i--){
+                myList2.add(count,myList.get(i));
+                count++;
+            }
+            return myList2;
+        }
+
+        public static ArrayList<Character>stringToArrayList(String A, ArrayList<Character> myList){
+            for (int i = 0; i < A.length(); i++)
+                myList.add(i, A.charAt(i));
+            return myList;
+        }
+    }
